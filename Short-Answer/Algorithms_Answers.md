@@ -58,6 +58,7 @@ case of 0 bunnies having 0 ears.
 
 ## Exercise II
 
+```
 def find_floor_f(floors, range=None):
     lower_range = midpoint = floors // 2    # 1            
     upper_range = midpoint + floors         # 1
@@ -68,6 +69,7 @@ def find_floor_f(floors, range=None):
         find_floor_f(lower_range)               # O(n/2), O(n/4), O(n/8)
     else:                                   # 1:
         find_floor_f(upper_range)               # O(n/2), O(n/4), O(n/8)
+```
 
 The order of the recursive calls looks like a convergent geometric series.
 For each recursive call, the sum converges to O(2n) ~ O(n). Since only one
