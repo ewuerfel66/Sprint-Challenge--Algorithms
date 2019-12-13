@@ -92,12 +92,53 @@ class SortingRobot:
         """
         return self._light == "ON"
 
+    def one_pass(self):
+        swap_count = 0
+
+        # Pick up item for comparison
+        self.swap_item()
+        
+        # Move to the next neighbor if possible
+        while self.can_move_right():
+            self.move_right()
+            
+            # self has nothing
+            if self.compare_item() == None:
+                self.move_left()
+                self.swap_item()
+            
+            # Neighbors out of order
+            elif self.compare_item() == 1:
+                # Place larger, pick up smaller
+                self.swap_item()
+                swap_count += 1
+                self.move_left()
+                
+                self.swap_item()
+                self.move_right()
+                
+            # Neighbors are in order (including the same)
+            elif self.compare_item() <= 0:
+                # move back to original position and place card
+                self.move_left()
+                self.swap_item()
+                # Move to next neighbor
+                self.move_right()
+                
+        # Reset position, if robit can't move right
+        else:
+            while self.can_move_left():
+                self.move_left()
+                
+        return swap_count
+
     def sort(self):
-        """
-        Sort the robot's list.
-        """
-        # Fill this out
-        pass
+        swap_count = 1
+        
+        while swap_count > 0:
+            swap_count = self.one_pass()
+            
+        return self._list
 
 
 if __name__ == "__main__":

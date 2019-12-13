@@ -14,7 +14,9 @@ Saving n^2 and n^3 as variables should reduce runtime.
 
 
 b) This block of code is O(n) because it iterates through `range(n)` once.
-
+For each `i` in `range(n)` the `while` loop figures out how many times `j=1` must
+be doubled to be greater than `i`. The `sum` variable keeps track of the amount of
+times `j` is doubled throughout the `while` loop.
 
 ```
     sum = 0                 # 1
@@ -48,7 +50,11 @@ def find_floor_f(floors, range=None):
     drop egg from midpoint                  # 1
 
     if egg breaks:                          # 1:
-        find_floor_f(lower_range)               # Recursive Call
+        find_floor_f(lower_range)               # O(n/2), O(n/4), O(n/8)
     else:                                   # 1:
-        find_floor_f(upper_range)               # Recursive Call
+        find_floor_f(upper_range)               # O(n/2), O(n/4), O(n/8)
 
+The order of the recursive calls looks like a convergent geometric series.
+For each recursive call, the sum converges to O(2n) ~ O(n). Since only one
+call can be made for each prior call (because of the if/elif structure) this
+entire function is also O(n).
