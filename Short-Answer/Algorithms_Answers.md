@@ -5,7 +5,22 @@
 a) Given that `n` is fixed, this block of code is quite inefficient.
 Every time the condition of the `while` loop is checked, n^3 is calculated.
 Everytime `a` is altered within the `while` loop, n^2 is calculated.
-Saving n^2 and n^3 as variables should reduce runtime. 
+Saving n^2 and n^3 as variables should reduce runtime.
+
+The runtime of this code is dependent on the difference between n^3 and n^2.
+With `a=0` this loop will run on the order of `n` times as shown below:
+
+
+Take `i` as the number of iterations, and the simple case where a_0 = 0:
+
+The `while` condition is met when:
+  a = n^3 --> but a_0 = 0  and a_i = i * n^2
+    Therefore...
+
+i * n^2 = n^3
+  Therefore...
+
+i = n
 
 ``` a = 0                       # 1
     while (a < n * n * n):      # 1:
