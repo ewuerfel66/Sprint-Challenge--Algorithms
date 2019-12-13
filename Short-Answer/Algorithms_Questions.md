@@ -5,15 +5,18 @@
 Give an analysis of the running time of each snippet of
 pseudocode with respect to the input size n of each of the following:
 
-```python
-a)  a = 0
+python
+a)  
+``` a = 0
     while (a < n * n * n):
       a = a + n * n
 ```
 
 
+
+b)  
 ```
-b)  sum = 0
+    sum = 0
     for i in range(n):
       j = 1
       while j < n:
@@ -22,7 +25,8 @@ b)  sum = 0
 ```
 
 ```
-c)  def bunnyEars(bunnies):
+c)  
+    def bunnyEars(bunnies):
       if bunnies == 0:
         return 0
 
